@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gsilva <gsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/23 11:48:14 by gsilva            #+#    #+#             */
-/*   Updated: 2022/12/08 16:59:16 by gsilva           ###   ########.fr       */
+/*   Created: 2022/12/06 16:27:57 by gsilva            #+#    #+#             */
+/*   Updated: 2022/12/06 17:02:58 by gsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../include/libft.h"
 
-int	main(int argc, char **argv)
+int	ft_putnbr_base(unsigned long n, char *base)
 {
-	int		map_file;
+	int	printed;
 
-	(void)argc;
-	game()->mlx = mlx_init();
-	map_file = open(argv[1], O_RDONLY);
-	create_map(map_file);
-	create_win();
-	create_chr();
-	mlx_hook(game()->win, 2, 1L << 0, keyhook, chr());
-	mlx_loop(game()->mlx);
-	return (0);
+	printed = 0;
+	if (n / 16 > 0)
+		printed += (ft_putnbr_base((n / ft_strlen(base)), base));
+	printed += ft_putchar_fd(base[n % 16], 1);
+	return (printed);
 }

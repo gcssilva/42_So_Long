@@ -1,28 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gsilva <gsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/23 11:48:14 by gsilva            #+#    #+#             */
-/*   Updated: 2022/12/08 16:59:16 by gsilva           ###   ########.fr       */
+/*   Created: 2022/08/13 10:48:40 by gsilva            #+#    #+#             */
+/*   Updated: 2022/12/06 13:14:37 by gsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../include/libft.h"
 
-int	main(int argc, char **argv)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	int		map_file;
+	size_t	i;
+	size_t	j;
 
-	(void)argc;
-	game()->mlx = mlx_init();
-	map_file = open(argv[1], O_RDONLY);
-	create_map(map_file);
-	create_win();
-	create_chr();
-	mlx_hook(game()->win, 2, 1L << 0, keyhook, chr());
-	mlx_loop(game()->mlx);
-	return (0);
+	if (!*little)
+		return ((char *)big);
+	i = 0;
+	while ((i < len) && big[i])
+	{
+		j = 0;
+		while (little[j] && i + j < len)
+		{
+			if (little[j] != big[j + i])
+				break ;
+			j++;
+		}
+		if (little[j] == 0)
+			return ((char *)&big[i]);
+		i++;
+	}
+	return (NULL);
 }

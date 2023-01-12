@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gsilva <gsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/23 11:48:14 by gsilva            #+#    #+#             */
-/*   Updated: 2022/12/08 16:59:16 by gsilva           ###   ########.fr       */
+/*   Created: 2022/10/14 13:06:28 by gsilva            #+#    #+#             */
+/*   Updated: 2022/12/06 13:17:04 by gsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../include/libft.h"
 
-int	main(int argc, char **argv)
+t_list	*ft_lstnew(void *content)
 {
-	int		map_file;
+	t_list	*newlist;
 
-	(void)argc;
-	game()->mlx = mlx_init();
-	map_file = open(argv[1], O_RDONLY);
-	create_map(map_file);
-	create_win();
-	create_chr();
-	mlx_hook(game()->win, 2, 1L << 0, keyhook, chr());
-	mlx_loop(game()->mlx);
-	return (0);
+	newlist = (t_list *)malloc(sizeof(t_list));
+	if (!newlist)
+		return (NULL);
+	newlist->content = content;
+	newlist->next = NULL;
+	return (newlist);
 }

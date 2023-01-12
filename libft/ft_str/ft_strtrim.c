@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gsilva <gsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/23 11:48:14 by gsilva            #+#    #+#             */
-/*   Updated: 2022/12/08 16:59:16 by gsilva           ###   ########.fr       */
+/*   Created: 2022/10/11 09:54:53 by gsilva            #+#    #+#             */
+/*   Updated: 2022/12/06 13:14:49 by gsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../include/libft.h"
 
-int	main(int argc, char **argv)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	int		map_file;
+	size_t	start;
+	size_t	end;
 
-	(void)argc;
-	game()->mlx = mlx_init();
-	map_file = open(argv[1], O_RDONLY);
-	create_map(map_file);
-	create_win();
-	create_chr();
-	mlx_hook(game()->win, 2, 1L << 0, keyhook, chr());
-	mlx_loop(game()->mlx);
-	return (0);
+	if (!s1 || !set)
+		return (NULL);
+	start = 0;
+	end = ft_strlen((char *)s1);
+	while (ft_strchr(set, s1[start]))
+		start++;
+	while (end > start && ft_strchr(set, s1[end]))
+		end--;
+	return (ft_substr(s1, start, (end - start) + 1));
 }

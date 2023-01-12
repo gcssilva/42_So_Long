@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gsilva <gsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/23 11:48:14 by gsilva            #+#    #+#             */
-/*   Updated: 2022/12/08 16:59:16 by gsilva           ###   ########.fr       */
+/*   Created: 2022/10/15 08:27:39 by gsilva            #+#    #+#             */
+/*   Updated: 2022/12/06 13:17:00 by gsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../include/libft.h"
 
-int	main(int argc, char **argv)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	int		map_file;
+	t_list	*newlist;
+	t_list	*temp;
 
-	(void)argc;
-	game()->mlx = mlx_init();
-	map_file = open(argv[1], O_RDONLY);
-	create_map(map_file);
-	create_win();
-	create_chr();
-	mlx_hook(game()->win, 2, 1L << 0, keyhook, chr());
-	mlx_loop(game()->mlx);
-	return (0);
+	newlist = NULL;
+	while (lst)
+	{
+		temp = ft_lstnew((f)(lst->content));
+		if (!temp)
+			ft_lstclear(&temp, del);
+		ft_lstadd_back(&newlist, temp);
+		lst = lst->next;
+	}
+	return (newlist);
 }

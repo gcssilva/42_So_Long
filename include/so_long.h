@@ -6,29 +6,27 @@
 /*   By: gsilva <gsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 11:48:10 by gsilva            #+#    #+#             */
-/*   Updated: 2022/12/02 16:57:38 by gsilva           ###   ########.fr       */
+/*   Updated: 2022/12/08 17:29:18 by gsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
-# include "get_next_line.h"
+# include "../libft/libft.h"
 # include "../mlx/mlx.h"
 # include "../mlx/mlx_int.h"
 # include <stdlib.h>
 # include <stdio.h>
 # include <fcntl.h>
 
-typedef struct s_game
+typedef struct s_chr
 {
-	int		pos_y;
 	int		pos_x;
-	void	*mlx;
-	void	*win;
+	int		pos_y;
+	int		width;
+	int		height;
 	void	*img;
-	int		img_width;
-	int		img_height;
-}	t_game;
+}	t_chr;
 
 typedef struct s_map
 {
@@ -38,21 +36,29 @@ typedef struct s_map
 	void	*next;
 }	t_map;
 
-typedef struct s_map_info
+typedef struct s_game
 {
-	int		width;
-	int		height;
-	t_map	*first;
-	t_map	*last;
-}	t_map_info;
+	void	*mlx;
+	void	*win;
+	int		map_lines;
+}	t_game;
 
+int		keyhook(int keycode, t_chr *chr);
 
-int			keyhook(int keycode, t_game *game);
+void	add_node(t_map *map, t_map *new);
 
-void		add_node(t_map **map, t_map *new);
+void	create_map(int fd);
 
-t_map_info	*create_map(int fd);
+void	create_chr(void);
 
-t_map		*new_map_node(char *content, int idx);
+void	create_win(void);
+
+t_map	*new_map_node(char *content, int idx);
+
+t_game	*game(void);
+
+t_map	*map(void);
+
+t_chr	*chr(void);
 
 #endif

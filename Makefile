@@ -1,24 +1,36 @@
 NAME	=	so_long
 
-FLAGS	=	-Wall -Werror -Wextra -o
+FLAGS	=	-Wall -Werror -Wextra
 
-CC		=	gcc
+CC		=	cc
 
-LIB		=	-L ./mlx -lmlx -lXext -lX11
+LIB		=	-L ./libft -lft -L ./mlx -lmlx -lXext -lX11
 
-INC		=	includes/so_long.h			\
-			includes/get_next_line.h    \
+INC		=	includes/so_long.h	\
+			includes/libft.h	\
 
-SRC		=	main/so_long.c				\
-			map_handler/create_map.c	\
-			events/events.c				\
-			gnl/get_next_line.c			\
-			gnl/get_next_line_utils.c	\
+SRC		=	main/so_long.c	\
+			start/create_chr.c	\
+			start/create_game.c	\
+			start/create_map.c	\
+			start/create_win.c	\
+			events/events.c	\
 
 all:	$(NAME)
 
 $(NAME):
-		$(CC) $(FLAGS) $(NAME) $(SRC) $(LIB)
+		make -C libft
+		make -C mlx
+		$(CC) $(FLAGS) -o $(NAME) $(SRC) $(LIB)
 
 clean:
-		rm -rf $(NAME)
+		make clean -C libft
+		make clean -C mlx
+
+fclean:
+		make fclean -C libft
+		make clean -C mlx
+		rm -f $(NAME)
+
+re:		fclean
+		make

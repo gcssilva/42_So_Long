@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   create_win.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gsilva <gsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/17 16:29:06 by gsilva            #+#    #+#             */
-/*   Updated: 2022/12/02 14:21:36 by gsilva           ###   ########.fr       */
+/*   Created: 2022/12/08 12:58:14 by gsilva            #+#    #+#             */
+/*   Updated: 2022/12/08 17:10:12 by gsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/get_next_line.h"
+#include "../include/so_long.h"
 
-char	*get_next_line(int fd)
+void	create_win(void)
 {
-	static char	next[BUFFER_SIZE + 1];
+	int	x;
 
-	if (fd < 0 || BUFFER_SIZE < 1)
-		return (NULL);
-	return (ft_read(next, 0, fd));
+	x = ft_strlen(map()->line);
+	game()->win = mlx_new_window(game()->mlx, x * 40, game()->map_lines * 40, "so_long");
 }

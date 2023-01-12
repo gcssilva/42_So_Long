@@ -6,21 +6,25 @@
 /*   By: gsilva <gsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:18:21 by gsilva            #+#    #+#             */
-/*   Updated: 2022/12/02 16:50:09 by gsilva           ###   ########.fr       */
+/*   Updated: 2022/12/08 17:59:21 by gsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../include/so_long.h"
 
-t_map_info	*create_map(int fd)
+t_map	*map(void)
 {
-	t_map_info	*map_info;
-	t_map		*node;
-	t_map		*tmp_node;
-	char		*tmp;
-	int			i;
+	static t_map	map_struct;
 
-	node = 0;
+	return (&map_struct);
+}
+
+void	create_map(int fd)
+{
+	t_map	*tmp_node;
+	char	*tmp;
+	int		i;
+
 	i = 0;
 	while (1)
 	{
@@ -28,16 +32,16 @@ t_map_info	*create_map(int fd)
 		if (!tmp)
 			break ;
 		tmp_node = new_map_node(tmp, i++);
-		add_node(&node, tmp_node);
+		add_node(map(), tmp_node);
+		// ft_printf("%s\n%s\n", map()->line, node->line);
 	}
-	map_info = (t_map_info *)malloc(sizeof(t_map_info));
-	if (!map_info)
-		return (0);
-	map_info->first = node;
-	map_info->last = tmp_node;
-	map_info->width = ft_strlen(tmp);
-	map_info->height = i - 1;
-	return (map_info);
+	game()->map_lines = i;
+	tmp_node = map();
+	while (tmp_node)
+	{
+		ft_printf("%s", map()->line);
+		tmp_node = tmp_node->next;
+	}
 }
 
 t_map	*new_map_node(char *content, int idx)
@@ -54,16 +58,19 @@ t_map	*new_map_node(char *content, int idx)
 	return (new);
 }
 
-void	add_node(t_map **map, t_map *new)
+void	add_node(t_map *map, t_map *new)
 {
 	t_map	*tmp;
 
-	if (!*map)
+	if (!map->line)
 	{
-		*map = new;
+		map->line = new->line;
+		map->index = new->index;
+		map->next = new->next;
+		map->prev = new->next;
 		return ;
 	}
-	tmp = *map;
+	tmp = map;
 	while (tmp->next)
 		tmp = tmp->next;
 	tmp->next = new;
