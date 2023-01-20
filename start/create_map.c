@@ -6,7 +6,7 @@
 /*   By: gsilva <gsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:18:21 by gsilva            #+#    #+#             */
-/*   Updated: 2022/12/08 17:59:21 by gsilva           ###   ########.fr       */
+/*   Updated: 2023/01/20 13:10:32 by gsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,12 @@ void	create_map(int fd)
 			break ;
 		tmp_node = new_map_node(tmp, i++);
 		add_node(map(), tmp_node);
-		// ft_printf("%s\n%s\n", map()->line, node->line);
 	}
 	game()->map_lines = i;
 	tmp_node = map();
 	while (tmp_node)
 	{
-		ft_printf("%s", map()->line);
+		ft_printf("%s", tmp_node->line);
 		tmp_node = tmp_node->next;
 	}
 }

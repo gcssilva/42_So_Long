@@ -6,7 +6,7 @@
 /*   By: gsilva <gsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 16:47:08 by gsilva            #+#    #+#             */
-/*   Updated: 2022/12/08 16:42:47 by gsilva           ###   ########.fr       */
+/*   Updated: 2023/01/20 12:57:19 by gsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	create_chr(void)
 {
 	chr()->width = 40;
 	chr()->height = 40;
-	chr()->img = mlx_xpm_file_to_image(game()->mlx, "../assets/pixito.xpm", &chr()->width, &chr()->height);
+	chr()->img = mlx_xpm_file_to_image(game()->mlx, "../assets/chr.xpm", &chr()->width, &chr()->height);
 	find_chr(chr());
 }
 
