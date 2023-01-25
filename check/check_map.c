@@ -6,7 +6,7 @@
 /*   By: gsilva <gsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 13:10:30 by gsilva            #+#    #+#             */
-/*   Updated: 2023/01/25 13:55:34 by gsilva           ###   ########.fr       */
+/*   Updated: 2023/01/25 16:44:20 by gsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,9 @@ int	mid_check(char *line)
 void	obj_check(char c)
 {
 	if (c == 'P')
-		map()->p += 1;
+		game()->p += 1;
 	else if (c == 'C')
-		map()->c += 1;
+		game()->c += 1;
 	else if (c == 'E')
-		map()->e += 1;
+		game()->e += 1;
 }

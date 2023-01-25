@@ -6,7 +6,7 @@
 /*   By: gsilva <gsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 11:48:10 by gsilva            #+#    #+#             */
-/*   Updated: 2023/01/25 14:13:22 by gsilva           ###   ########.fr       */
+/*   Updated: 2023/01/25 16:57:44 by gsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,6 @@ typedef struct s_chr
 typedef struct s_map
 {
 	int		index;
-	int		c;
-	int		e;
-	int		p;
 	char	*line;
 	void	*prev;
 	void	*next;
@@ -43,6 +40,9 @@ typedef struct s_game
 {
 	void	*mlx;
 	void	*win;
+	int		c;
+	int		e;
+	int		p;
 	int		map_lines;
 }	t_game;
 
@@ -50,7 +50,7 @@ typedef struct s_game
 
 int		check_map(void);
 
-int		keyhook(int keycode, t_chr *chr);
+int		keyhook(int keycode);
 
 int		top_bot_check(char *line);
 
