@@ -6,7 +6,7 @@
 /*   By: gsilva <gsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 11:48:14 by gsilva            #+#    #+#             */
-/*   Updated: 2023/01/25 16:55:14 by gsilva           ###   ########.fr       */
+/*   Updated: 2023/01/25 17:08:36 by gsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int argc, char **argv)
 	create_map(map_file);
 	create_win();
 	create_chr();
-	mlx_hook(game()->win, 2, 1L << 0, keyhook, chr());
+	mlx_key_hook(game()->win, keyhook, chr());
 	mlx_put_image_to_window(game()->mlx, game()->win,
 		chr()->img, chr()->pos_y * 40, chr()->pos_x * 40);
 	mlx_loop(game()->mlx);
