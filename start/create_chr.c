@@ -6,7 +6,7 @@
 /*   By: gsilva <gsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 16:47:08 by gsilva            #+#    #+#             */
-/*   Updated: 2023/01/20 12:57:19 by gsilva           ###   ########.fr       */
+/*   Updated: 2023/01/23 13:05:06 by gsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,15 @@ void	create_chr(void)
 {
 	chr()->width = 40;
 	chr()->height = 40;
-	chr()->img = mlx_xpm_file_to_image(game()->mlx, "../assets/chr.xpm", &chr()->width, &chr()->height);
+	chr()->img = mlx_xpm_file_to_image(game()->mlx, _CHR, &chr()->width,
+			&chr()->height);
 	find_chr(chr());
 }
 
 static void	find_chr(t_chr *chr)
 {
-	t_map	*tmp;
-	int		i;
+	t_map *tmp;
+	int i;
 
 	tmp = map();
 	while (tmp)

@@ -6,7 +6,7 @@
 /*   By: gsilva <gsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 11:48:10 by gsilva            #+#    #+#             */
-/*   Updated: 2022/12/08 17:29:18 by gsilva           ###   ########.fr       */
+/*   Updated: 2023/01/25 14:13:22 by gsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@ typedef struct s_chr
 typedef struct s_map
 {
 	int		index;
+	int		c;
+	int		e;
+	int		p;
 	char	*line;
 	void	*prev;
 	void	*next;
@@ -43,7 +46,17 @@ typedef struct s_game
 	int		map_lines;
 }	t_game;
 
+# define _CHR "./assets/chr.xpm"
+
+int		check_map(void);
+
 int		keyhook(int keycode, t_chr *chr);
+
+int		top_bot_check(char *line);
+
+int		mid_check(char *line);
+
+void	obj_check(char c);
 
 void	add_node(t_map *map, t_map *new);
 
