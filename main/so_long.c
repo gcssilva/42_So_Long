@@ -6,7 +6,7 @@
 /*   By: gsilva <gsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 11:48:14 by gsilva            #+#    #+#             */
-/*   Updated: 2023/01/25 17:13:19 by gsilva           ###   ########.fr       */
+/*   Updated: 2023/02/06 15:42:57 by gsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,12 @@
 
 int	main(int argc, char **argv)
 {
-	int		map_file;
 
 	(void)argc;
 	game()->mlx = mlx_init();
-	game()->c = 0;
-	game()->e = 0;
-	game()->p = 0;
-	map_file = open(argv[1], O_RDONLY);
-	create_map(map_file);
+	create_map(argv[1]);
+	if (!check_map)
+		return ;
 	create_win();
 	create_chr();
 	mlx_key_hook(game()->win, keyhook, chr());
