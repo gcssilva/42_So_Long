@@ -6,13 +6,11 @@
 /*   By: gsilva <gsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 16:47:08 by gsilva            #+#    #+#             */
-/*   Updated: 2023/01/23 13:05:06 by gsilva           ###   ########.fr       */
+/*   Updated: 2023/02/07 16:29:23 by gsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
-
-static void	find_chr(t_chr *chr);
 
 t_chr	*chr(void)
 {
@@ -27,25 +25,4 @@ void	create_chr(void)
 	chr()->height = 40;
 	chr()->img = mlx_xpm_file_to_image(game()->mlx, _CHR, &chr()->width,
 			&chr()->height);
-	find_chr(chr());
-}
-
-static void	find_chr(t_chr *chr)
-{
-	t_map *tmp;
-	int i;
-
-	tmp = map();
-	while (tmp)
-	{
-		i = 0;
-		while (tmp->line[i] && tmp->line[i] != 'P')
-			i++;
-		if (tmp->line[i] == 'P')
-		{
-			chr->pos_y = tmp->index;
-			chr->pos_x = i;
-		}
-		tmp = tmp->next;
-	}
 }

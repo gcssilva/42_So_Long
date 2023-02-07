@@ -6,7 +6,7 @@
 /*   By: gsilva <gsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 11:48:10 by gsilva            #+#    #+#             */
-/*   Updated: 2023/02/06 17:00:21 by gsilva           ###   ########.fr       */
+/*   Updated: 2023/02/07 16:27:23 by gsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct s_map
 
 typedef struct s_game
 {
+	int		map_lines;
 	void	*mlx;
 	void	*win;
 }	t_game;
@@ -53,6 +54,8 @@ int		top_bot_check(char *line);
 int		mid_check(char *line);
 
 int		get_lines(int fd);
+
+void	path_check(int y, int x);
 
 void	obj_check(char c, int i);
 

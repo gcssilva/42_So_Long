@@ -6,7 +6,7 @@
 /*   By: gsilva <gsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 13:10:30 by gsilva            #+#    #+#             */
-/*   Updated: 2023/02/06 17:13:48 by gsilva           ###   ########.fr       */
+/*   Updated: 2023/02/07 16:34:39 by gsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,13 @@ int	check_map(void)
 	top_bot_check(map()->map[i]);
 	if (map()->c == 0 || map()->e != 1 || map()->p != 1)
 		return (0);
-	if (!path_check(chr()->pos_y, chr()->pos_x))
+	path_check(chr()->pos_y, chr()->pos_x);
+	if (map()->c != 0 || map()->e != 0)
 		return (0);
+	i = -1;
+	while (map()->map[++i])
+		ft_printf("%s", map()->map[i]);
+	ft_printf("\n%u %u\n", map()->c, map()->e);
 	return (1);
 }
 
@@ -71,16 +76,25 @@ void	obj_check(char c, int i)
 		map()->e += 1;
 }
 
-int	path_check(int y, int x)
+void	path_check(int y, int x)
 {
-	if (!map()->map[y][x] || map()->map[y][x] == '1')
-		return (0);
-	if (map()->map[y][x] == '0' || map()->map[y][x] == 'P')
+	if (!map()->map[y][x] || map()->map[y][x] == '1' || map()->map[y][x] == 'o'
+		|| map()->map[y][x] == 'c' || map()->map[y][x] == 'e')
+		return ;
+	if (map()->map[y][x] == '0')
+		map()->map[y][x] = 'o';
+	else if (map()->map[y][x] == 'C')
 	{
-		if (path_check(y, x + 1) || path_check(y + 1, x)
-			|| path_check(y, x - 1) || path_check(y - 1, x))
-			return (1);
+		map()->map[y][x] = 'c';
+		map()->c -= 1;
 	}
-	if (map()->map[y][x] == 'E')
-		return (1);
+	else if (map()->map[y][x] == 'E')
+	{
+		map()->map[y][x] = 'e';
+		map()->e -= 1;
+	}
+	path_check(y, x + 1);
+	path_check(y + 1, x);
+	path_check(y, x - 1);
+	path_check(y - 1, x);
 }

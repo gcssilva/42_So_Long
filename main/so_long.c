@@ -6,7 +6,7 @@
 /*   By: gsilva <gsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 11:48:14 by gsilva            #+#    #+#             */
-/*   Updated: 2023/02/06 15:42:57 by gsilva           ###   ########.fr       */
+/*   Updated: 2023/02/07 16:37:29 by gsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,11 @@ int	main(int argc, char **argv)
 	(void)argc;
 	game()->mlx = mlx_init();
 	create_map(argv[1]);
-	if (!check_map)
-		return ;
+	if (!check_map())
+	{
+		ft_printf("Invalid map!\n");
+		return (0);
+	}
 	create_win();
 	create_chr();
 	mlx_key_hook(game()->win, keyhook, chr());
