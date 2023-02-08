@@ -6,32 +6,61 @@
 /*   By: gsilva <gsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:11:39 by gsilva            #+#    #+#             */
-/*   Updated: 2023/01/25 17:10:16 by gsilva           ###   ########.fr       */
+/*   Updated: 2023/02/08 01:54:43 by gsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
+
+static void	walk_right(void);
+static void	walk_left(void);
+static void	walk_up(void);
+static void	walk_down(void);
 
 int	keyhook(int keycode)
 {
 	if (keycode)
 	{
 		if (keycode == 65363)
-			chr()->pos_y += 40;
+			walk_right();
 		else if (keycode == 65361)
-			chr()->pos_y -= 40;
-		else if (keycode == 65364)
-			chr()->pos_x += 40;
+			walk_left();
 		else if (keycode == 65362)
-			chr()->pos_x -= 40;
+			walk_up();
+		else if (keycode == 65364)
+			walk_down();
 		else if (keycode == 65307)
 		{
 			mlx_destroy_window(game()->mlx, game()->win);
 			exit(0);
 		}
-		mlx_clear_window(game()->mlx, game()->win);
+		fill_map();
 		mlx_put_image_to_window(game()->mlx, game()->win,
-			chr()->img, chr()->pos_y, chr()->pos_x);
+			chr()->img, chr()->y * 40, chr()->x * 40);
 	}
 	return (0);
+}
+
+static void	walk_right(void)
+{
+	if (map()->map[chr()->x][(chr()->y) + 1] != '1')
+		chr()->y += 1;
+}
+
+static void	walk_left(void)
+{
+	if (map()->map[chr()->x][(chr()->y) - 1] != '1')
+		chr()->y -= 1;
+}
+
+static void	walk_up(void)
+{
+	if (map()->map[(chr()->x) - 1][chr()->y] != '1')
+		chr()->x -= 1;
+}
+
+static void	walk_down(void)
+{
+	if (map()->map[(chr()->x) + 1][chr()->y] != '1')
+		chr()->x += 1;
 }

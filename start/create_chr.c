@@ -6,7 +6,7 @@
 /*   By: gsilva <gsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 16:47:08 by gsilva            #+#    #+#             */
-/*   Updated: 2023/02/07 16:29:23 by gsilva           ###   ########.fr       */
+/*   Updated: 2023/02/07 22:12:59 by gsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,11 @@ t_chr	*chr(void)
 
 void	create_chr(void)
 {
+	void	*tmp;
+
 	chr()->width = 40;
 	chr()->height = 40;
-	chr()->img = mlx_xpm_file_to_image(game()->mlx, _CHR, &chr()->width,
+	tmp = mlx_xpm_file_to_image(game()->mlx, "./assets/chr.xpm", &chr()->width,
 			&chr()->height);
+	chr()->img = tmp;
 }

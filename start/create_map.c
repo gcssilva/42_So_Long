@@ -6,7 +6,7 @@
 /*   By: gsilva <gsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:18:21 by gsilva            #+#    #+#             */
-/*   Updated: 2023/02/07 16:27:44 by gsilva           ###   ########.fr       */
+/*   Updated: 2023/02/07 21:12:07 by gsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	create_map(char *path)
 	i = get_lines(fd);
 	close(fd);
 	fd = open(path, O_RDONLY);
-	map()->map = (char **)malloc(i * (sizeof(char *)));
+	map()->map = (char **)malloc((i + 1) * (sizeof(char *)));
 	game()->map_lines = i;
 	i = 0;
 	while (1)
@@ -38,6 +38,7 @@ void	create_map(char *path)
 			break ;
 		i++;
 	}
+	map()->map[i] = 0;
 	map()->c = 0;
 	map()->e = 0;
 	map()->p = 0;

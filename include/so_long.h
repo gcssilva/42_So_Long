@@ -6,7 +6,7 @@
 /*   By: gsilva <gsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 11:48:10 by gsilva            #+#    #+#             */
-/*   Updated: 2023/02/07 16:27:23 by gsilva           ###   ########.fr       */
+/*   Updated: 2023/02/08 01:10:31 by gsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 
 typedef struct s_chr
 {
-	int		pos_x;
-	int		pos_y;
+	int		y;
+	int		x;
 	int		width;
 	int		height;
 	void	*img;
@@ -43,21 +43,21 @@ typedef struct s_game
 	void	*win;
 }	t_game;
 
-# define _CHR "./assets/chr.xpm"
-
 int		check_map(void);
 
 int		keyhook(int keycode);
 
 int		top_bot_check(char *line);
 
-int		mid_check(char *line);
+int		mid_check(char *line, int x);
 
 int		get_lines(int fd);
 
+void	fill_map(void);
+
 void	path_check(int y, int x);
 
-void	obj_check(char c, int i);
+void	obj_check(char c, int y, int x);
 
 void	create_map(char *path);
 

@@ -14,7 +14,8 @@ SRC		=	main/so_long.c	\
 			start/create_game.c	\
 			start/create_map.c	\
 			start/create_win.c	\
-			check/check_map.c	\
+			functions/check_map.c	\
+			functions/fill_map.c	\
 			events/events.c	\
 
 all:	$(NAME)
