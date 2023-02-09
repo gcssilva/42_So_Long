@@ -6,7 +6,7 @@
 /*   By: gsilva <gsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 13:10:30 by gsilva            #+#    #+#             */
-/*   Updated: 2023/02/08 20:03:13 by gsilva           ###   ########.fr       */
+/*   Updated: 2023/02/09 13:53:23 by gsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ int	check_map(void)
 		return (0);
 	while (map()->map[i + 1])
 	{
-		mid_check(map()->map[i], i);
-		if (ft_strlen(map()->map[i]) != len)
+		if (!mid_check(map()->map[i], i)
+			|| ft_strlen(map()->map[i]) != len)
 			return (0);
 		i++;
 	}
@@ -54,14 +54,20 @@ int	mid_check(char *line, int x)
 {
 	int	i;
 
-	i = 0;
-	if (line[i] != '1')
-		return (1);
-	while (line[++i])
+	i = 1;
+	if (line[0] != '1')
+		return (0);
+	while (line[i] && line[i] != '\n')
+	{
+		if (line[i] != '1' && line[i] != '0' && line[i] != 'P'
+			&& line[i] != 'C' && line[i] != 'E')
+			return (0);
 		obj_check(line[i], i, x);
+		i++;
+	}
 	if (line[i - 1] != '1')
-		return (1);
-	return (0);
+		return (0);
+	return (1);
 }
 
 void	obj_check(char c, int y, int x)
@@ -80,24 +86,24 @@ void	obj_check(char c, int y, int x)
 
 void	path_check(int y, int x)
 {
-	if (!map()->map[y][x] || map()->map[y][x] == '1' || map()->map[y][x] == 'o'
-		|| map()->map[y][x] == 'c' || map()->map[y][x] == 'e'
-		|| map()->map[y][x] == 'p')
+	if (!map()->map[x] || !map()->map[x][y] || map()->map[x][y] == '1'
+		|| map()->map[x][y] == 'o' || map()->map[x][y] == 'c'
+		|| map()->map[x][y] == 'e' || map()->map[x][y] == 'p')
 		return ;
-	if (map()->map[y][x] == '0')
-		map()->map[y][x] = 'o';
-	else if (map()->map[y][x] == 'P')
+	if (map()->map[x][y] == '0')
+		map()->map[x][y] = 'o';
+	else if (map()->map[x][y] == 'P')
 	{
-		map()->map[y][x] = 'p';
+		map()->map[x][y] = 'p';
 	}
-	else if (map()->map[y][x] == 'C')
+	else if (map()->map[x][y] == 'C')
 	{
-		map()->map[y][x] = 'c';
+		map()->map[x][y] = 'c';
 		map()->c -= 1;
 	}
-	else if (map()->map[y][x] == 'E')
+	else if (map()->map[x][y] == 'E')
 	{
-		map()->map[y][x] = 'e';
+		map()->map[x][y] = 'e';
 		map()->e -= 1;
 	}
 	path_check(y, x + 1);
