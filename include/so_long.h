@@ -6,7 +6,7 @@
 /*   By: gsilva <gsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 11:48:10 by gsilva            #+#    #+#             */
-/*   Updated: 2023/02/08 01:10:31 by gsilva           ###   ########.fr       */
+/*   Updated: 2023/02/09 15:30:38 by gsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,16 @@ typedef struct s_chr
 	int		height;
 	void	*img;
 }	t_chr;
+
+typedef struct s_image
+{
+	void	*floor;
+	void	*wall;
+	void	*colec;
+	void	*exit;
+	int		width;
+	int		height;
+}	t_image;
 
 typedef struct s_map
 {
@@ -61,7 +71,7 @@ void	obj_check(char c, int y, int x);
 
 void	create_map(char *path);
 
-void	create_chr(void);
+void	create_img(void);
 
 void	create_win(void);
 
@@ -70,5 +80,7 @@ t_game	*game(void);
 t_map	*map(void);
 
 t_chr	*chr(void);
+
+t_image	*img(void);
 
 #endif

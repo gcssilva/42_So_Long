@@ -6,7 +6,7 @@
 /*   By: gsilva <gsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:11:39 by gsilva            #+#    #+#             */
-/*   Updated: 2023/02/08 01:54:43 by gsilva           ###   ########.fr       */
+/*   Updated: 2023/02/09 15:36:56 by gsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ int	keyhook(int keycode)
 			exit(0);
 		}
 		fill_map();
-		mlx_put_image_to_window(game()->mlx, game()->win,
-			chr()->img, chr()->y * 40, chr()->x * 40);
 	}
 	return (0);
 }

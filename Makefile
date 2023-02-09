@@ -10,7 +10,7 @@ INC		=	includes/so_long.h	\
 			includes/libft.h	\
 
 SRC		=	main/so_long.c	\
-			start/create_chr.c	\
+			start/create_img.c	\
 			start/create_game.c	\
 			start/create_map.c	\
 			start/create_win.c	\
