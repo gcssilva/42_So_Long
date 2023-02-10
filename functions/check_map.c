@@ -6,7 +6,7 @@
 /*   By: gsilva <gsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 13:10:30 by gsilva            #+#    #+#             */
-/*   Updated: 2023/02/09 13:53:23 by gsilva           ###   ########.fr       */
+/*   Updated: 2023/02/10 13:54:53 by gsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	check_map(void)
 	if (map()->c == 0 || map()->e != 1 || map()->p != 1)
 		return (0);
 	path_check(chr()->y, chr()->x);
-	if (map()->c != 0 || map()->e != 0)
+	if (map()->c != map()->_c || map()->e != map()->_e)
 		return (0);
 	return (1);
 }
@@ -99,12 +99,12 @@ void	path_check(int y, int x)
 	else if (map()->map[x][y] == 'C')
 	{
 		map()->map[x][y] = 'c';
-		map()->c -= 1;
+		map()->_c += 1;
 	}
 	else if (map()->map[x][y] == 'E')
 	{
 		map()->map[x][y] = 'e';
-		map()->e -= 1;
+		map()->_e += 1;
 	}
 	path_check(y, x + 1);
 	path_check(y + 1, x);
