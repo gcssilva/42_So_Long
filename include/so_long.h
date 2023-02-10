@@ -6,7 +6,7 @@
 /*   By: gsilva <gsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 11:48:10 by gsilva            #+#    #+#             */
-/*   Updated: 2023/02/10 13:51:50 by gsilva           ###   ########.fr       */
+/*   Updated: 2023/02/10 15:29:15 by gsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_image
 	void	*wall;
 	void	*colec;
 	void	*exit;
+	void	*win;
 	int		width;
 	int		height;
 }	t_image;

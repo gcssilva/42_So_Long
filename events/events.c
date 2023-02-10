@@ -6,7 +6,7 @@
 /*   By: gsilva <gsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:11:39 by gsilva            #+#    #+#             */
-/*   Updated: 2023/02/10 14:15:30 by gsilva           ###   ########.fr       */
+/*   Updated: 2023/02/10 15:46:35 by gsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ int	keyhook(int keycode)
 {
 	if (map()->c == 0 && map()->map[chr()->x][chr()->y] == 'e')
 	{
-		mlx_string_put (game()->mlx, game()->win, 10, 20, 0x000000, "You Win!");
+		mlx_put_image_to_window(game()->mlx, game()->win,
+			img()->win, 0, 0);
 		if (keycode == 65307)
 		{
 			mlx_destroy_window(game()->mlx, game()->win);

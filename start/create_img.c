@@ -6,11 +6,13 @@
 /*   By: gsilva <gsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 16:47:08 by gsilva            #+#    #+#             */
-/*   Updated: 2023/02/10 13:25:44 by gsilva           ###   ########.fr       */
+/*   Updated: 2023/02/10 15:40:26 by gsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
+
+static void	win_img(void);
 
 t_chr	*chr(void)
 {
@@ -32,7 +34,7 @@ void	create_img(void)
 	void	*wall;
 	void	*floor;
 	void	*colec;
-	// void	*exit;
+	void	*exit;
 
 	img()->width = 60;
 	img()->height = 60;
@@ -44,11 +46,22 @@ void	create_img(void)
 			&img()->width, &img()->height);
 	colec = mlx_xpm_file_to_image(game()->mlx, "./assets/colec.xpm",
 			&img()->width, &img()->height);
-	// exit = mlx_xpm_file_to_image(game()->mlx, "./assets/exit.xpm",
-	// 		&img()->width, &img()->height);
+	exit = mlx_xpm_file_to_image(game()->mlx, "./assets/exit.xpm",
+			&img()->width, &img()->height);
 	chr()->img = ch;
 	img()->wall = wall;
 	img()->floor = floor;
 	img()->colec = colec;
-	// img()->exit = exit;
+	img()->exit = exit;
+	win_img();
+}
+
+static void	win_img(void)
+{
+	void	*win;
+
+	img()->width = 180;
+	win = mlx_xpm_file_to_image(game()->mlx, "./assets/win.xpm", &img()->width,
+			&img()->height);
+	img()->win = win;
 }
