@@ -6,11 +6,16 @@
 /*   By: gsilva <gsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 01:08:57 by gsilva            #+#    #+#             */
-/*   Updated: 2023/02/10 15:46:00 by gsilva           ###   ########.fr       */
+/*   Updated: 2023/02/15 15:56:09 by gsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
+
+static void	put_floor(int x, int y);
+static void	put_wall(int x, int y);
+static void	put_colec(int x, int y);
+static void	put_exit(int x, int y);
 
 void	fill_map(void)
 {
@@ -23,17 +28,13 @@ void	fill_map(void)
 		x = -1;
 		while (map()->map[y][++x])
 		{
-			mlx_put_image_to_window(game()->mlx, game()->win,
-				img()->floor, x * 60, y * 60);
+			put_floor(x, y);
 			if (map()->map[y][x] == '1')
-				mlx_put_image_to_window(game()->mlx, game()->win,
-					img()->wall, x * 60, y * 60);
+				put_wall(x, y);
 			if (map()->map[y][x] == 'c')
-				mlx_put_image_to_window(game()->mlx, game()->win,
-					img()->colec, x * 60, y * 60);
+				put_colec(x, y);
 			if (map()->map[y][x] == 'e')
-				mlx_put_image_to_window(game()->mlx, game()->win,
-					img()->exit, x * 60, y * 60);
+				put_exit(x, y);
 		}
 	}
 	mlx_put_image_to_window(game()->mlx, game()->win,
@@ -41,4 +42,28 @@ void	fill_map(void)
 	if (map()->c == 0 && map()->map[chr()->x][chr()->y] == 'e')
 		mlx_put_image_to_window(game()->mlx, game()->win,
 			img()->win, 0, 0);
+}
+
+static void	put_floor(int x, int y)
+{
+	mlx_put_image_to_window(game()->mlx, game()->win,
+		img()->floor, x * 60, y * 60);
+}
+
+static void	put_wall(int x, int y)
+{
+	mlx_put_image_to_window(game()->mlx, game()->win,
+		img()->wall, x * 60, y * 60);
+}
+
+static void	put_colec(int x, int y)
+{
+	mlx_put_image_to_window(game()->mlx, game()->win,
+		img()->colec, x * 60, y * 60);
+}
+
+static void	put_exit(int x, int y)
+{
+	mlx_put_image_to_window(game()->mlx, game()->win,
+		img()->exit, x * 60, y * 60);
 }

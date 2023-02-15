@@ -6,7 +6,7 @@
 /*   By: gsilva <gsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 13:10:30 by gsilva            #+#    #+#             */
-/*   Updated: 2023/02/10 13:54:53 by gsilva           ###   ########.fr       */
+/*   Updated: 2023/02/15 15:27:11 by gsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	check_map(void)
 	size_t	len;
 
 	i = 0;
+	if (!map()->map[0])
+		return (0);
 	len = ft_strlen(map()->map[0]);
 	if (!top_bot_check(map()->map[0]))
 		return (0);

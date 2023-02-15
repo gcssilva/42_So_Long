@@ -6,7 +6,7 @@
 /*   By: gsilva <gsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 11:48:14 by gsilva            #+#    #+#             */
-/*   Updated: 2023/02/10 13:50:16 by gsilva           ###   ########.fr       */
+/*   Updated: 2023/02/15 15:25:39 by gsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	main(int argc, char **argv)
 {
-
 	(void)argc;
 	game()->mlx = mlx_init();
 	create_map(argv[1]);
