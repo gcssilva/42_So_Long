@@ -10,13 +10,13 @@ INC		=	includes/so_long.h	\
 			includes/libft.h	\
 
 SRC		=	main/so_long.c	\
-			start/create_img.c	\
-			start/create_game.c	\
-			start/create_map.c	\
-			start/create_win.c	\
+			functions/create_img.c	\
+			functions/create_game.c	\
+			functions/create_map.c	\
+			functions/create_win.c	\
 			functions/check_map.c	\
 			functions/fill_map.c	\
-			events/events.c	\
+			functions/events.c	\
 
 all:	$(NAME)
 
