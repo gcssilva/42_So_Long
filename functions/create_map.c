@@ -6,7 +6,7 @@
 /*   By: gsilva <gsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:18:21 by gsilva            #+#    #+#             */
-/*   Updated: 2023/05/17 14:19:25 by gsilva           ###   ########.fr       */
+/*   Updated: 2023/05/17 15:50:54 by gsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,6 @@ void	create_map(char *path)
 	map()->e = 0;
 	map()->_e = 0;
 	map()->p = 0;
-	i = -1;
-	while (map()->map[++i])
-		ft_printf("%s\n", map()->map[i]);
 }
 
 int	get_lines(int fd)
