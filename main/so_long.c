@@ -6,7 +6,7 @@
 /*   By: gsilva <gsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 11:48:14 by gsilva            #+#    #+#             */
-/*   Updated: 2023/02/17 15:42:19 by gsilva           ###   ########.fr       */
+/*   Updated: 2023/05/17 13:52:18 by gsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,12 @@
 
 int	main(int argc, char **argv)
 {
-	(void)argc;
 	game()->mlx = mlx_init();
 	game()->moves = 0;
 	create_map(argv[1]);
-	if (!check_map())
+	if (argc != 2 || !check_map())
 	{
-		ft_printf("Invalid map!\n");
+		ft_printf("Error\nInvalid map!\n");
 		return (0);
 	}
 	create_win();

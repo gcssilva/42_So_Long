@@ -6,7 +6,7 @@
 /*   By: gsilva <gsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 11:48:10 by gsilva            #+#    #+#             */
-/*   Updated: 2023/02/17 15:41:19 by gsilva           ###   ########.fr       */
+/*   Updated: 2023/05/17 14:13:11 by gsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int		check_map(void);
 
 int		keyhook(int keycode);
 
-int		top_bot_check(char *line);
+int		top_bot_check(char *line, size_t len);
 
 int		mid_check(char *line, int x);
 

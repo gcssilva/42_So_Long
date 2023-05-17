@@ -36,3 +36,5 @@ fclean:
 
 re:		fclean
 		make
+
+.PHONY:	all clean fclean re

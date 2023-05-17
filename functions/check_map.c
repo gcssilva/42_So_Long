@@ -6,7 +6,7 @@
 /*   By: gsilva <gsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 13:10:30 by gsilva            #+#    #+#             */
-/*   Updated: 2023/02/15 15:27:11 by gsilva           ###   ########.fr       */
+/*   Updated: 2023/05/17 14:25:58 by gsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ int	check_map(void)
 	int		i;
 	size_t	len;
 
-	i = 0;
 	if (!map()->map[0])
 		return (0);
 	len = ft_strlen(map()->map[0]);
-	if (!top_bot_check(map()->map[0]))
+	if (!top_bot_check(map()->map[0], len))
 		return (0);
+	i = 1;
 	while (map()->map[i + 1])
 	{
 		if (!mid_check(map()->map[i], i)
@@ -30,8 +30,7 @@ int	check_map(void)
 			return (0);
 		i++;
 	}
-	if (ft_strlen(map()->map[i]) != (len - 1)
-		|| !top_bot_check(map()->map[i]))
+	if (!top_bot_check(map()->map[i], len -1))
 		return (0);
 	if (map()->c == 0 || map()->e != 1 || map()->p != 1)
 		return (0);
@@ -41,14 +40,19 @@ int	check_map(void)
 	return (1);
 }
 
-int	top_bot_check(char *line)
+int	top_bot_check(char *line, size_t len)
 {
 	int	i;
 
-	i = -1;
+	if (ft_strlen(line) != len)
+		return (0);
+	i = 0;
 	while (line[i] && line[i] != '\n')
+	{
 		if (line[i] != '1')
 			return (0);
+		i++;
+	}
 	return (1);
 }
 
