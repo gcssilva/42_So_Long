@@ -6,7 +6,7 @@
 /*   By: gsilva <gsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 11:48:10 by gsilva            #+#    #+#             */
-/*   Updated: 2023/05/17 14:13:11 by gsilva           ###   ########.fr       */
+/*   Updated: 2023/05/18 15:57:34 by gsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ int		mid_check(char *line, int x);
 
 int		get_lines(int fd);
 
+int		close_win(int keycode);
+
 void	fill_map(void);
 
 void	path_check(int y, int x);
@@ -78,6 +80,8 @@ void	create_map(char *path);
 void	create_img(void);
 
 void	create_win(void);
+
+void	close_game(void);
 
 t_game	*game(void);
 

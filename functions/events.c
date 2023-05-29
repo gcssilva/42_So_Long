@@ -6,7 +6,7 @@
 /*   By: gsilva <gsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:11:39 by gsilva            #+#    #+#             */
-/*   Updated: 2023/02/17 16:09:44 by gsilva           ###   ########.fr       */
+/*   Updated: 2023/05/29 15:42:43 by gsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,8 @@ static void	walk_down(void);
 
 int	keyhook(int keycode)
 {
-	if (map()->c == 0 && map()->map[chr()->x][chr()->y] == 'e')
-	{
-		mlx_put_image_to_window(game()->mlx, game()->win,
-			img()->win, 0, 0);
-	}
+	if (keycode == 65307)
+		close_game();
 	else
 	{
 		if (keycode == 65363)
@@ -34,11 +31,6 @@ int	keyhook(int keycode)
 			walk_up();
 		else if (keycode == 65364)
 			walk_down();
-	}
-	if (keycode == 65307)
-	{
-		mlx_destroy_window(game()->mlx, game()->win);
-		exit(0);
 	}
 	fill_map();
 	return (0);

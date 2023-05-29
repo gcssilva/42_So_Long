@@ -6,13 +6,11 @@
 /*   By: gsilva <gsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 16:47:08 by gsilva            #+#    #+#             */
-/*   Updated: 2023/02/10 15:40:26 by gsilva           ###   ########.fr       */
+/*   Updated: 2023/05/18 15:59:09 by gsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
-
-static void	win_img(void);
 
 t_chr	*chr(void)
 {
@@ -53,15 +51,4 @@ void	create_img(void)
 	img()->floor = floor;
 	img()->colec = colec;
 	img()->exit = exit;
-	win_img();
-}
-
-static void	win_img(void)
-{
-	void	*win;
-
-	img()->width = 180;
-	win = mlx_xpm_file_to_image(game()->mlx, "./assets/win.xpm", &img()->width,
-			&img()->height);
-	img()->win = win;
 }

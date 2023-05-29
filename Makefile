@@ -17,6 +17,7 @@ SRC		=	main/so_long.c	\
 			functions/check_map.c	\
 			functions/fill_map.c	\
 			functions/events.c	\
+			functions/close_game.c	\
 
 all:	$(NAME)
 

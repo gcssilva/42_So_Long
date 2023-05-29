@@ -6,7 +6,7 @@
 /*   By: gsilva <gsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 11:48:14 by gsilva            #+#    #+#             */
-/*   Updated: 2023/05/17 13:52:18 by gsilva           ###   ########.fr       */
+/*   Updated: 2023/05/18 15:59:50 by gsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ int	main(int argc, char **argv)
 	create_win();
 	create_img();
 	fill_map();
-	mlx_key_hook(game()->win, keyhook, chr());
+	mlx_hook(game()->win, 2, 1L << 0, keyhook, game()->mlx);
+	mlx_hook(game()->win, 17, 1L << 0, close_win, game()->mlx);
 	mlx_loop(game()->mlx);
 	return (0);
 }
