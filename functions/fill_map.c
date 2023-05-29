@@ -6,7 +6,7 @@
 /*   By: gsilva <gsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 01:08:57 by gsilva            #+#    #+#             */
-/*   Updated: 2023/05/29 15:42:31 by gsilva           ###   ########.fr       */
+/*   Updated: 2023/05/29 16:50:58 by gsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,21 @@ void	fill_map(void)
 	int		x;
 
 	y = -1;
+	mlx_clear_window(game()->mlx, game()->win);
 	while (map()->map[++y])
 	{
 		x = -1;
 		while (map()->map[y][++x])
 		{
-			put_floor(x, y);
-			if (map()->map[y][x] == '1')
+			if (x == chr()->y && y == chr()->x)
+				continue ;
+			else if (map()->map[y][x] == '0' || map()->map[y][x] == 'o')
+				put_floor(x, y);
+			else if (map()->map[y][x] == '1')
 				put_wall(x, y);
-			if (map()->map[y][x] == 'c')
+			else if (map()->map[y][x] == 'c')
 				put_colec(x, y);
-			if (map()->map[y][x] == 'e')
+			else if (map()->map[y][x] == 'e')
 				put_exit(x, y);
 		}
 	}

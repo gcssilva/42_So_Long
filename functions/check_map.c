@@ -6,7 +6,7 @@
 /*   By: gsilva <gsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 13:10:30 by gsilva            #+#    #+#             */
-/*   Updated: 2023/05/17 14:25:58 by gsilva           ###   ########.fr       */
+/*   Updated: 2023/05/29 16:41:36 by gsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void	path_check(int y, int x)
 		map()->map[x][y] = 'o';
 	else if (map()->map[x][y] == 'P')
 	{
-		map()->map[x][y] = 'p';
+		map()->map[x][y] = 'o';
 	}
 	else if (map()->map[x][y] == 'C')
 	{
