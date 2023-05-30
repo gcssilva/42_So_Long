@@ -6,7 +6,7 @@
 /*   By: gsilva <gsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:11:39 by gsilva            #+#    #+#             */
-/*   Updated: 2023/05/29 15:42:43 by gsilva           ###   ########.fr       */
+/*   Updated: 2023/05/30 17:15:00 by gsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	keyhook(int keycode)
 
 static void	walk_right(void)
 {
+	(chr()->img) = img()->chr_right;
 	if (map()->map[chr()->x][(chr()->y) + 1] == '1')
 		return ;
 	if (map()->map[chr()->x][(chr()->y) + 1] == 'c')
@@ -51,6 +52,7 @@ static void	walk_right(void)
 
 static void	walk_left(void)
 {
+	(chr()->img) = img()->chr_left;
 	if (map()->map[chr()->x][(chr()->y) - 1] == '1')
 		return ;
 	if (map()->map[chr()->x][(chr()->y) - 1] == 'c')

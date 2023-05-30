@@ -6,7 +6,7 @@
 /*   By: gsilva <gsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 16:47:08 by gsilva            #+#    #+#             */
-/*   Updated: 2023/05/30 15:48:40 by gsilva           ###   ########.fr       */
+/*   Updated: 2023/05/30 17:12:14 by gsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,10 @@ void	create_img(void)
 {
 	img()->width = 60;
 	img()->height = 60;
-	(chr()->img) = mlx_xpm_file_to_image(game()->mlx, "./assets/chr.xpm",
-			&img()->width, &img()->height);
+	(img()->chr_left) = mlx_xpm_file_to_image(game()->mlx,
+			"./assets/chr_left.xpm", &img()->width, &img()->height);
+	(img()->chr_right) = mlx_xpm_file_to_image(game()->mlx,
+			"./assets/chr_right.xpm", &img()->width, &img()->height);
 	(img()->wall) = mlx_xpm_file_to_image(game()->mlx, "./assets/wall.xpm",
 			&img()->width, &img()->height);
 	(img()->floor) = mlx_xpm_file_to_image(game()->mlx, "./assets/floor.xpm",
@@ -40,4 +42,5 @@ void	create_img(void)
 			&img()->width, &img()->height);
 	(img()->exit) = mlx_xpm_file_to_image(game()->mlx, "./assets/exit.xpm",
 			&img()->width, &img()->height);
+	(chr()->img) = img()->chr_right;
 }

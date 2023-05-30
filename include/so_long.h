@@ -6,7 +6,7 @@
 /*   By: gsilva <gsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 11:48:10 by gsilva            #+#    #+#             */
-/*   Updated: 2023/05/30 15:29:09 by gsilva           ###   ########.fr       */
+/*   Updated: 2023/05/30 17:08:39 by gsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ typedef struct s_chr
 
 typedef struct s_image
 {
+	void	*chr_left;
+	void	*chr_right;
 	void	*floor;
 	void	*wall;
 	void	*colec;
