@@ -6,7 +6,7 @@
 /*   By: gsilva <gsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 13:10:30 by gsilva            #+#    #+#             */
-/*   Updated: 2023/05/29 16:41:36 by gsilva           ###   ########.fr       */
+/*   Updated: 2023/05/30 16:13:57 by gsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	check_map(void)
 	if (!top_bot_check(map()->map[0], len))
 		return (0);
 	i = 1;
-	while (map()->map[i + 1])
+	while (i < (game()->map_lines) - 1)
 	{
 		if (!mid_check(map()->map[i], i)
 			|| ft_strlen(map()->map[i]) != len)

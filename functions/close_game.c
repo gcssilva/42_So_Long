@@ -6,7 +6,7 @@
 /*   By: gsilva <gsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:37:56 by gsilva            #+#    #+#             */
-/*   Updated: 2023/05/29 16:37:41 by gsilva           ###   ########.fr       */
+/*   Updated: 2023/05/30 16:20:09 by gsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ void	close_game(void)
 	int	i;
 
 	i = -1;
-	while (map()->map[++i])
+	mlx_destroy_window(game()->mlx, game()->win);
+	while (++i < (game()->map_lines))
 		free(map()->map[i]);
 	if (map()->map)
 		free(map()->map);
@@ -31,9 +32,9 @@ void	close_game(void)
 		mlx_destroy_image(game()->mlx, img()->colec);
 	if (img()->exit)
 		mlx_destroy_image(game()->mlx, img()->exit);
-	mlx_destroy_window(game()->mlx, game()->win);
 	mlx_destroy_display(game()->mlx);
 	free(game()->mlx);
+	exit(0);
 }
 
 int	close_win(int keycode)
