@@ -6,7 +6,7 @@
 /*   By: gsilva <gsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:37:56 by gsilva            #+#    #+#             */
-/*   Updated: 2023/05/30 16:20:09 by gsilva           ###   ########.fr       */
+/*   Updated: 2023/05/31 14:39:20 by gsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,10 @@ void	close_game(void)
 		free(map()->map[i]);
 	if (map()->map)
 		free(map()->map);
-	if (chr()->img)
-		mlx_destroy_image(game()->mlx, chr()->img);
+	if (img()->chr_left)
+		mlx_destroy_image(game()->mlx, img()->chr_left);
+	if (img()->chr_right)
+		mlx_destroy_image(game()->mlx, img()->chr_right);
 	if (img()->floor)
 		mlx_destroy_image(game()->mlx, img()->floor);
 	if (img()->wall)
