@@ -1,6 +1,6 @@
 NAME	=	so_long
 
-FLAGS	=	-Wall -Werror -Wextra -g
+FLAGS	=	-Wall -Werror -Wextra
 
 CC		=	cc
 
