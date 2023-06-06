@@ -6,7 +6,7 @@
 /*   By: gsilva <gsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:18:21 by gsilva            #+#    #+#             */
-/*   Updated: 2023/05/30 16:09:33 by gsilva           ###   ########.fr       */
+/*   Updated: 2023/05/31 16:43:58 by gsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	create_map(char *path)
 	int	fd;
 
 	fd = open(path, O_RDONLY);
+	if (fd < 0 || fd > FOPEN_MAX)
+		return ;
 	i = get_lines(fd);
 	close(fd);
 	fd = open(path, O_RDONLY);

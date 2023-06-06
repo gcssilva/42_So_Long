@@ -6,7 +6,7 @@
 /*   By: gsilva <gsilva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 11:48:10 by gsilva            #+#    #+#             */
-/*   Updated: 2023/05/30 17:08:39 by gsilva           ###   ########.fr       */
+/*   Updated: 2023/05/31 16:41:02 by gsilva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "../mlx/mlx_int.h"
 # include <stdlib.h>
 # include <stdio.h>
+# include <unistd.h>
 # include <fcntl.h>
 
 typedef struct s_chr
