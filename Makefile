@@ -27,7 +27,7 @@ $(NAME):
 		$(CC) $(FLAGS) -o $(NAME) $(SRC) $(LIB)
 
 clean:
-		make clean -C libft
+		make fclean -C libft
 		make clean -C mlx
 
 fclean:
